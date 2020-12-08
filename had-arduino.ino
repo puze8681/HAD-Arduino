@@ -38,7 +38,9 @@ void setup()
   servo.attach(6);
   lcd.init();
   lcd.noBacklight();
-  setBaseLCD(10);
+  int regist = analogRead(A0);
+  int baseLine = map(regist, 0, 1023, 0, 100);
+  setBaseLCD(baseLine);
 }
 
 void loop()
@@ -125,7 +127,6 @@ void loop()
     }
   }
 }
-
 void setBaseLCD(int baseLine) {
   isMoveBaseLine = false;
   setColor(255, 0, 255);
